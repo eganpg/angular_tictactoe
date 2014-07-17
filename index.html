@@ -1,0 +1,20 @@
+<!doctype html>
+<html ng-app="tictactoe">
+<head>
+	<title></title>
+	 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+	<!- <script type="text/javascript" src="angularjs.js"></
+	<!- script> 
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body ng-controller="Grid" ng-init="cells = [[0,1,2],[0,1,2],[0,1,2]]">
+	<div class="gridcontainer">	
+		<div class="row" ng-repeat="row in cells track by $index">
+			<div class="column" ng-style="myStyle" ng-click="Grid()" ng-repeat="cell in row track by $index">
+				
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
