@@ -6,7 +6,7 @@
 		<script type="text/javascript" src="angularjs.js"></script> 
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
-	<body ng-controller="Grid" ng-init="cells = [[1,2,4],[8,16,32],[64,128,256]]">
+	<body ng-controller="Grid">
 		<div class="gridcontainer">	
 			<div class="row" ng-repeat="row in cells track by $index">
 				<div class="column" 

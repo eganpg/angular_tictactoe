@@ -1,9 +1,10 @@
 var appName = angular.module('tictactoe', []);
 appName.controller('Grid', function($scope) {
-
+	$scope.cells = [[1,2,4],[8,16,32],[64,128,256]]; 
+	console.log($scope.cells);
 	$scope.xMoves = 0;
 	$scope.oMoves = 0;
-	cell = 0;
+	
 	count = 0;
 	$scope.changeColor = function(cell) {
 		if (count % 2 == 0) {
