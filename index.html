@@ -10,16 +10,13 @@
 		<div class="gridcontainer">	
 			<div class="row" ng-repeat="row in cells track by $index">
 				<div class="column" 
-				ng-class="{x:isThisTrue, o:}"
-				ng-click="isThisTrue = true, function"  
-				
+				ng-click="changeColor(cell)"
+				ng-class="{black:isSet(xMoves, cell), blue: isSet(oMoves, cell)}"
 				ng-repeat="cell in row track by $index">
-				<!-- trace: {{traceStyle}} -->
 				</div>
-				
 			</div>
 		</div>
-	</div>
-
-</body>
+	</body>
 </html>
+
+

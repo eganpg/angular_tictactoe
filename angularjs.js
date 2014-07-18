@@ -1,6 +1,27 @@
 var appName = angular.module('tictactoe', []);
 appName.controller('Grid', function($scope) {
 
+	$scope.xMoves = 0;
+	$scope.oMoves = 0;
+	cell = 0;
+	count = 0;
+	$scope.changeColor = function(cell) {
+		if (count % 2 == 0) {
+			count = count + 1;	
+			$scope.xMoves += cell;
+			return true;
+		}
+		else {
+			count = count + 1;
+			$scope.oMoves += cell;
+			return false;
+		}
+	}
+
+	$scope.isSet = function(whatever, cell){
+		return (whatever & cell) == cell;
+	}
+
 /*  $scope.traceStyle = "" ;
 
 	$scope.changeColor = function() {
@@ -23,4 +44,4 @@ appName.controller('Grid', function($scope) {
 				} */
 
 
-			});
+});
