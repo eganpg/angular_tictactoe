@@ -30,6 +30,7 @@ appName.controller('Grid', function($scope) {
 			count = count + 1;
 			$scope.oMoves += cell;
 			$scope.oArray.push(cell);
+			$scope.winningArrayO();
 			// console.log($scope.oArray);
 			// console.log(cell);
 			// $scope.winningNumberY = cell + $scope.winningNumberY;
@@ -39,14 +40,18 @@ appName.controller('Grid', function($scope) {
 		}
 	}
 // Changes the color of the background
-	$scope.isSet = function(whatever, cell){
-		return (whatever & cell) == cell;
-	}
-
-	$scope.winningArrayX = function() {
+$scope.isSet = function(whatever, cell){
+	return (whatever & cell) == cell;
+}
+// Call a function 
+$scope.winningArrayX = function() {
+	// don't execute unless there has been more than 4 moves
+	if (count > 4) {
+		//sort the x array to allow for a clean search
 		$scope.xArray.sort();
-		if (count > 4) {
+		// run a loop though the 8 predefines arrays
 		for (var i = 0; i < $scope.winningCombo.length; i++) {
+			// run a loop that executes a loop based on the number of xArray
 			for (var j = 0; j < $scope.xArray.length; j++) {
 				if ($scope.winningCombo[i][j] == $scope.xArray[0]) {
 					j++;
@@ -58,20 +63,35 @@ appName.controller('Grid', function($scope) {
 						else if ($scope.winningCombo[i][j] == $scope.xArray[3]) {
 							alert('XWins');
 						}
-
-						else if ($scope.winningCombo[i][j] == $scope.xArray[4]) {
-							alert('Xwins');
+					}
+				}
+			}
+		}
+	}
+}
+$scope.winningArrayO = function() {
+	if (count > 4) {
+		$scope.xArray.sort();
+		for (var i = 0; i < $scope.winningCombo.length; i++) {
+			for (var j = 0; j < $scope.oArray.length; j++) {
+				if ($scope.winningCombo[i][j] == $scope.oArray[0]) {
+					j++;
+					if ($scope.winningCombo[i][j] == $scope.oArray[1]) {
+						j++;
+						if ($scope.winningCombo[i][j] == $scope.oArray[2]) {
+							alert('O wins');
+						}
+						else if ($scope.winningCombo[i][j] == $scope.oArray[3]) {
+							alert('O Wins');
 						}
 					}
 				}
-					// console.log($scope.winningCombo[i][j]);
-
 			}
 		}
 	}
 }
 		// }
-	/* Write a Function that logs the value of a specific square */
+		/* Write a Function that logs the value of a specific square */
 
 	// $scope.determineAWinner = function() {
 	// 	console.log($scope.winningNumberX)
@@ -80,5 +100,4 @@ appName.controller('Grid', function($scope) {
 	// 		alert('x wins');
 	// 	}
 	// }
-
 });
