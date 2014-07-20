@@ -5,105 +5,163 @@ appName.controller('Grid', function($scope) {
 	$scope.oMoves = 0;
 	$scope.xArray = [];
 	$scope.oArray = [];
+	$scope.xWinCount = 0;
 	$scope.winningCombo = [[1,2,4],[8,16,32],[64,128,256],[1,8,64],[2,16,128],[4,32,256],[1,16,256],[4,16,64]];
-	
 
-	// console.log($scope.winningCombo1)
-	// $scope.winningNumberX = 0;
-	// $scope.winningNumberY = 0;
 	count = 0;
 	$scope.changeColor = function(cell) {
 		if (count % 2 == 0) {
 			count = count + 1;	
 			$scope.xMoves += cell;
 			$scope.xArray.push(cell);
-			// console.log($scope.xArray);
-			// console.log(cell);
-			$scope.xArray.sort();
 			$scope.winningArrayX();
-			// $scope.winningNumberX = cell + $scope.winningNumberX;
-			// console.log($scope.winningNumberX); 
-			// $scope.determineAWinner();
 			return true;
 		}
 		else {
 			count = count + 1;
 			$scope.oMoves += cell;
 			$scope.oArray.push(cell);
-			// $scope.winningArrayO();
-			// console.log($scope.oArray);
-			// console.log(cell);
-			// $scope.winningNumberY = cell + $scope.winningNumberY;
-			// console.log($scope.winningNumberY);
-			// $scope.determineAWinner();
+			$scope.winningArrayO();
 			return false;
 		}
 	}
+$scope.sortingFunction = function() {
+	return $scope.xArray.sort();
+}
+
 // Changes the color of the background
 $scope.isSet = function(whatever, cell){
 	return (whatever & cell) == cell;
 }
 // Call a function 
 $scope.winningArrayX = function() {
-	// don't execute unless there has been more than 4 moves
-	// if (count > 4) {
-		//sort the x array to allow for a clean search
-		$scope.xArray = $scope.xArray.sort();
-		console.log($scope.xArray.sort())
-		// run a loop though the 8 predefines arrays
-		for (var i = 0; i < $scope.winningCombo.length; i++) {
-			// run a loop that executes a loop based on the number of xArray
-			for (var j = 0; j < $scope.xArray.length; j++) {
-				if ($scope.winningCombo[i][j] == $scope.xArray[0]) {
-					j++;
-					if ($scope.winningCombo[i][j] == $scope.xArray[1]) {
-						j++;
-						if ($scope.winningCombo[i][j] == $scope.xArray[2]) {
+		$scope.xArray.sort(function(a,b) {return a-b;})
+		console.log($scope.xArray);
+		for (var i = 0; i < $scope.winningCombo.length; i++)	{
+			// for (var j = 0; j < $scope.xArray.length; j++) {
+				if ($scope.winningCombo[i][0] == $scope.xArray[0]) {
+					// j++;
+					console.log('made it')
+					if ($scope.winningCombo[i][1] == $scope.xArray[1]) {
+						// j++;
+						if ($scope.winningCombo[i][2] == $scope.xArray[2]) {
 							alert('Xwins');
 						}
-						else if ($scope.winningCombo[i][j] == $scope.xArray[3]) {
+						else if ($scope.winningCombo[i][2] == $scope.xArray[3]) {
 							alert('XWins');
 						}
-						else if ($scope.winningCombo[i][j] == $scope.xArray[4]) {
+						else if ($scope.winningCombo[i][2] == $scope.xArray[4]) {
 							alert('xWins');
 						}
 						else {
 							return;
 						}
 					}
-					else if ($scope.winningCombo[i][j] == $scope.xArray[2]) {
-						j++;
-						if ($scope.winningCombo[i][j] == $scope.xArray[3]) {
+					else if ($scope.winningCombo[i][1] == $scope.xArray[1]) {
+						// j++;
+						if ($scope.winningCombo[i][2] == $scope.xArray[3]) {
 							alert('xWins');
 						}
-						else if ($scope.winningCombo[i][j] == $scope.xArray[4]) {
+						else if ($scope.winningCombo[i][2] == $scope.xArray[4]) {
 							alert('xWins');
 						}
 						else {
 							return;
 						}
 					}
-					else {return;}
+					else if ($scope.winningCombo[i][1] == $scope.xArray[3]) {
+						// j++;
+						if ($scope.winningCombo[i][2] == $scope.xArray[4]) {
+							alert('xWins');
+						}
+						else {
+							return;
+						}
+					}
 				}
-				else {return;}
-
-				// else if ($scope.winningCombo[i][j] == $scope.xArray[1]) {
-				// 	j++;
-				// 	console.log($scope.xArray);
-				// 	if ($scope.winningCombo[i][j] == $scope.xArray[2]) {
-				// 		j++;
-				// 		if ($scope.winningCombo[i][j] == $scope.xArray[3]) {
-				// 			alert('x wins');
-				// 		}
-				// 		else if ($scope.winningCombo[i][j] == $scope.xArray[4]) {
-				// 			alert('x wins');
-				// 		}
-				// 	}
-				// }
-			// }
-		}
+				else if ($scope.winningCombo[i][0] == $scope.xArray[1]) {
+					// j++;
+					if ($scope.winningCombo[i][1] == $scope.xArray[2]) {
+						// j++;
+						if($scope.winningCombo[i][2] == $scope.xArray[3]) {
+							alert('xWins');
+						}
+						else if ($scope.winningCombo[i][2] == $scope.xArray[4]) {
+							alert('xWins');
+						}
+						else {
+							return;
+						}
+					}
+					else if ($scope.winningCombo[i][1] == $scope.xArray[3]) {
+						// j++;
+						if($scope.winningCombo[i][2] == $scope.xArray[4]) {
+							alert('xWins');
+						}
+						else {
+							return;
+						}
+					}
+				}
+				else if ($scope.winningCombo[i][0] == $scope.xArray[2]) {
+					// j++;
+					if ($scope.winningCombo[i][1] == $scope.xArray[3]) {
+						// j++;
+						if ($scope.winningCombo[i][2] == $scope.xArray[4]) {
+							alert('xWins');
+						}
+						else {
+							return;
+						}
+					}
+				}
+			}
 	}
-}
+
+				// console.log($scope.winningCombo[i]);
+				// for (var j = 0; j < $scope.winningCombo; j++) {
+					// if (($scope.xArray[1] == $scope.winningCombo[i][0]) || ($scope.xArray[1] == $scope.winningCombo[i][1]) || ($scope.xArray[1] == $scope.winningCombo[i][2]))  {
+						
+					// 	if (($scope.xArray[2] == $scope.winningCombo[i][0]) || ($scope.xArray[2] == $scope.winningCombo[i][1]) || ($scope.xArray[2] == $scope.winningCombo[i][2])) {
+					// 		console.log('you have a winner');
+					// 	}
+					// 	else if (($scope.xArray[3] == $scope.winningCombo[i][0]) || ($scope.xArray[3] == $scope.winningCombo[i][1]) || ($scope.xArray[3] == $scope.winningCombo[i][2])) {
+					// 		console.log('you have a winner');
+					// 	}
+					// 	else if (($scope.xArray[4] == $scope.winningCombo[i][0]) || ($scope.xArray[4] == $scope.winningCombo[i][1]) || ($scope.xArray[4] == $scope.winningCombo[i][2])) {
+					// 		console.log('you have a winner');
+					// 	}
+					// 	else {
+					// 		alert('sometin wong')
+					// 	}
+					// }
+				// }
+				// for(var j = 0; j < $scope.winningCombo.length; j++) {
+				// 	if ($scope.xArray[1] == $scope.winningCombo[i][0])
+				// }
+			
+
+		
+			
+		
+	//sort the x array to allow for a clean search
+		
+	 // $scope.xArray.sort();
+		// console.log($scope.xArray);
+		// // run a loop though the 8 predefines arrays
+		// for (var i = 0; i < $scope.winningCombo.length; i++) {
+		// 	for (var j = 0; j < $scope.xArray.length; j++) {
+		// 		if (($scope.xArray[j] == $scope.winningCombo[i][0]) || ($scope.xArray[j] == $scope.winningCombo[i][1]) || ($scope.xArray[j] == $scope.winningCombo[i][2])) {
+		// 			$scope.xArray.sort();
+		// 			console.log($scope.xArray);
+
+					
+		// 		// $scope.xWinCount++;
+		// 		// console.log($scope.xWinCount)
+		// 		}
+		// 	}
+		// }
+
 // $scope.winningArrayO = function() {
 // 	if (count > 4) {
 // 		$scope.oArray.sort();
