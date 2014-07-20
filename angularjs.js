@@ -55,7 +55,7 @@ $scope.winningArrayX = function() {
 							return;
 						}
 					}
-					else if ($scope.winningCombo[i][1] == $scope.xArray[1]) {
+					else if ($scope.winningCombo[i][1] == $scope.xArray[2]) {
 						// j++;
 						if ($scope.winningCombo[i][2] == $scope.xArray[3]) {
 							alert('xWins');
@@ -138,7 +138,7 @@ $scope.winningArrayO = function() {
 							return;
 						}
 					}
-					else if ($scope.winningCombo[i][1] == $scope.oArray[1]) {
+					else if ($scope.winningCombo[i][1] == $scope.oArray[2]) {
 						// j++;
 						if ($scope.winningCombo[i][2] == $scope.oArray[3]) {
 							alert('O Wins');
