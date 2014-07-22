@@ -1,19 +1,29 @@
 	<!doctype html>
 	<html ng-app="tictactoe">
 	<head>
-		<title></title>
+		<title>Tic Tac Toe</title>
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
 		<script type="text/javascript" src="angularjs.js"></script> 
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="shortcut icon" href="ttt.png">
 	</head>
-	<body ng-controller="Grid">
-		<div class="gridcontainer">	
+	<body ng-controller="Grid" ng-style="{'background-image':player1Color.color}">
+		<div class="gridcontainer">
+		<h1>Global Tic Tac Toe</h1>	
 			<div class="row" ng-repeat="row in cells track by $index">
 				<div class="column" 
 				ng-click="changeColor(cell)"
-				ng-class="{black:isSet(xMoves, cell), blue: isSet(oMoves, cell)}"
+
+				ng-class="{ black: isSet(xMoves, cell), blue: isSet(oMoves, cell)}"
 				ng-repeat="cell in row track by $index">
 				</div>
+			</div>
+			<div>
+				<h3>In what city?</h3>
+				<select ng-model="player1Color" ng-options="p.name for p in playerColors"></select>
+				<h3>Player 1: {{xScore}}</h3> 
+				<h3>Player 2: {{oScore}}</h3>
+				<h3>Tie: {{TieED}}</h3>
 			</div>
 		</div>
 	</body>

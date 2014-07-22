@@ -1,17 +1,32 @@
 .row {
 	display: inline-block;
-	width: 10%;
+	width: 100px;
 	text-align: center;
 }
 
+.heading {
+	text-align: center;
+	width: 400px;
+}
+
+h1 {
+	text-align: center;
+}
 .column {
 	border: black;
 	border-style: solid;
+	border-radius: 5%;
 	height: 100px;
+	margin: 5px;
+}
+
+.gridcontainer {
+	text-align: center;
+	margin: 100px;
 }
 
 .column:hover {
-	background: grey;
+	background: rgba(0,0,0,0.5);
 }
 
 .black {
@@ -20,4 +35,19 @@
 
 .blue {
 	background: blue;
+}
+
+.green {
+	background: green;
+}
+
+.pink {
+	background: pink;
+}
+
+.green {
+	background: green;
+}
+h3 {
+	display: inline-block;
 }
