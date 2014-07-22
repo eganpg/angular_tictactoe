@@ -1,3 +1,9 @@
+.body_container {
+	background-size: cover;
+	text-align: center;
+	height: 670px;
+	
+}
 .row {
 	display: inline-block;
 	width: 100px;
@@ -50,4 +56,5 @@ h1 {
 }
 h3 {
 	display: inline-block;
+	color: black;
 }

@@ -158,6 +158,11 @@ $scope.winningArrayX = function() {
 						}
 					}
 				}
+				else {
+					if (count == 9) {
+						$scope.tie();
+					}
+				}
 			}
 		}
 $scope.winningArrayO = function() {
@@ -248,6 +253,11 @@ $scope.winningArrayO = function() {
 						else {
 							return;
 						}
+					}
+				}
+				else {
+					if (count == 9) {
+						$scope.tie();
 					}
 				}
 			}
