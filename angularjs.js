@@ -4,7 +4,7 @@
 
 var appName = angular.module('tictactoe', ["firebase"]);
 appName.controller('Grid', function($scope, $firebase) {
-	var appName = new Firebase("https://cromulent-tac-toe.firebaseio.com/");
+	var appName = new Firebase("https://cromulent-tac-toe.firebaseio.com");
 	$scope.cells = [[1,2,4],[8,16,32],[64,128,256]]; 
 	$scope.xMoves = 0;
 	$scope.count = $firebase(new Firebase("https://cromulent-tac-toe.firebaseio.com/" + '/count'));
@@ -33,7 +33,7 @@ appName.controller('Grid', function($scope, $firebase) {
 		}
 	}
 	$scope.changeColor = function(cell) {
-		if (count % 2 == 0) {
+		if ($scope.count % 2 == 0) {
 			$scope.count = $scope.count + 1;	
 			$scope.xMoves += cell;
 			$scope.xArray.push(cell);
