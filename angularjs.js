@@ -4,7 +4,7 @@
 
 var appName = angular.module('tictactoe', ["firebase"]);
 appName.controller('Grid', function($scope, $firebase) {
-	var FireMoves = new Firebase("https://cromulent-tac-toe.firebaseio.com/");
+	var appName = new Firebase("https://cromulent-tac-toe.firebaseio.com/");
 	$scope.cells = [[1,2,4],[8,16,32],[64,128,256]]; 
 	$scope.xMoves = 0;
 	$scope.count = $firebase(new Firebase("https://cromulent-tac-toe.firebaseio.com/" + '/count'));
