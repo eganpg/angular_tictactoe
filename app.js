@@ -1,31 +1,17 @@
-// var julieRef = new Firebase('https://SampleChat.firebaseIO-demo.com/users/julie/');
-// julieRef.on('value', function(snapshot) {
-//   if(snapshot.val() === null) {
-//     alert('User julie does not exist.');
-//   } else {
-//     var firstName = snapshot.val().name.first;
-//     var lastName = snapshot.val().name.last;
-//     alert('User julie’s full name is: ' + firstName + ' ' + lastName);
-//   }
-// });
-
-
 var appName = angular.module('tictactoe', ["firebase"]);
 appName.controller('Grid', function($scope, $firebase) {
-	var appRef = new Firebase("https://cromulent-tac-toe.firebaseio.com/");
-	//  
-	});
+	var xMoves = new Firebase("https://cromulent-tac-toe.firebaseio.com/");
 	$scope.cells = [[1,2,4],[8,16,32],[64,128,256]]; 
 	$scope.xMoves = 0;
+	$scope.xMoves = $firebase(xMoves);
 	$scope.oMoves = 0;
 	$scope.xArray = [];
 	$scope.oArray = [];
 	$scope.xScore = 0;
 	$scope.oScore = 0;
 	$scope.tieED = 0;
-	$scope.count = 0;
 	$scope.winningCombo = [[1,2,4],[8,16,32],[64,128,256],[1,8,64],[2,16,128],[4,32,256],[1,16,256],[4,16,64]];
-	
+	count = 0;
 	$scope.playerColors = [
 	{color: "url('nyc.jpg')", name: 'NYC'},
 	{color: "url('paris.jpg')", name: 'Paris'},
@@ -38,25 +24,20 @@ appName.controller('Grid', function($scope, $firebase) {
 			$scope.oArray.pop();
 			$scope.xMoves = 0;
 			$scope.oMoves = 0;
-			$scope.count = 0;
-			$scope.counter.$set({counter: $scope.count});
+			count = 0;
 			console.log($scope.xArray);
 		}
 	}
 	$scope.changeColor = function(cell) {
-		if ($scope.count % 2 == 0) {
-			$scope.count = $scope.count + 1;	
-			$scope.counter.$set({counter: $scope.count});
-			$scope.count = 0;
+		if (count % 2 == 0) {
+			count = count + 1;	
 			$scope.xMoves += cell;
 			$scope.xArray.push(cell);
 			$scope.winningArrayX();
 			return true;
 		}
 		else {
-			$scope.count = $scope.count + 1;
-			$scope.counter.$set({counter: $scope.count});
-			$scope.count = 0;
+			count = count + 1;
 			$scope.oMoves += cell;
 			$scope.oArray.push(cell);
 			$scope.winningArrayO();
@@ -176,7 +157,7 @@ $scope.winningArrayX = function() {
 					}
 				}
 				else {
-					if ($scope.count == 9) {
+					if (count == 9) {
 						$scope.tie();
 					}
 				}
@@ -273,10 +254,10 @@ $scope.winningArrayO = function() {
 					}
 				}
 				else {
-					if ($scope.count == 9) {
+					if (count == 9) {
 						$scope.tie();
 					}
 				}
 			}
-		}	
+		}		
 	});
