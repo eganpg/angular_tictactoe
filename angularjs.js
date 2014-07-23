@@ -161,7 +161,7 @@ $scope.winningArrayX = function() {
 					}
 				}
 				else {
-					if (count == 9) {
+					if ($scope.count == 9) {
 						$scope.tie();
 					}
 				}
@@ -258,7 +258,7 @@ $scope.winningArrayO = function() {
 					}
 				}
 				else {
-					if (count == 9) {
+					if ($scope.count == 9) {
 						$scope.tie();
 					}
 				}
