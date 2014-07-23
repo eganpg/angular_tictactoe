@@ -7,7 +7,7 @@ appName.controller('Grid', function($scope, $firebase) {
 	var FireMoves = new Firebase("https://cromulent-tac-toe.firebaseio.com/");
 	$scope.cells = [[1,2,4],[8,16,32],[64,128,256]]; 
 	$scope.xMoves = 0;
-	FireMoves.set(count);
+	FireMoves.set('count');
 	$scope.oMoves = 0;
 	$scope.xArray = [];
 	$scope.oArray = [];
