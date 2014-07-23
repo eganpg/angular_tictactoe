@@ -7,7 +7,7 @@ appName.controller('Grid', function($scope, $firebase) {
 	var appName = new Firebase("https://cromulent-tac-toe.firebaseio.com");
 	$scope.cells = [[1,2,4],[8,16,32],[64,128,256]]; 
 	$scope.xMoves = 0;
-	$scope.count = $firebase(new Firebase("https://cromulent-tac-toe.firebaseio.com/" + '/count'));
+	$scope.count = $firebase(new Firebase("https://cromulent-tac-toe.firebaseio.com" + '/count'));
 	$scope.oMoves = 0;
 	$scope.xArray = [];
 	$scope.oArray = [];
@@ -35,6 +35,7 @@ appName.controller('Grid', function($scope, $firebase) {
 	$scope.changeColor = function(cell) {
 		if ($scope.count % 2 == 0) {
 			$scope.count = $scope.count + 1;	
+			$scope.count.$set({count: $scope.count}) ;
 			$scope.xMoves += cell;
 			$scope.xArray.push(cell);
 			$scope.winningArrayX();
@@ -42,6 +43,7 @@ appName.controller('Grid', function($scope, $firebase) {
 		}
 		else {
 			$scope.count = $scope.count + 1;
+			$scope.count.$set({count: $scope.count}) ;
 			$scope.oMoves += cell;
 			$scope.oArray.push(cell);
 			$scope.winningArrayO();
