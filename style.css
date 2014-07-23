@@ -2,7 +2,21 @@
 	background-size: cover;
 	text-align: center;
 	height: 670px;
+	opacity: 0.8;
 	
+}
+
+#title {
+	padding-top: 280px;
+}
+
+#button {
+	width: 500px;
+	height: 200px;
+	font-size: large;
+	background-color: white;
+	opacity: 0.5;
+	border-radius: 30px;
 }
 .row {
 	display: inline-block;
